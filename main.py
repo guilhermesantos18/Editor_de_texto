@@ -1,5 +1,6 @@
 import sys
-from PySide6.QtWidgets import QApplication, QPushButton, QWidget, QVBoxLayout, QListWidgetItem, QMainWindow
+from PySide6.QtWidgets import QApplication, QPushButton, QWidget, QVBoxLayout, QMainWindow, QMenu, QMenuBar
+from PySide6.QtGui import QCursor
 
 
 def say_hello():
@@ -11,16 +12,14 @@ class GUI(QMainWindow):
         super(GUI, self).__init__()
         self.setGeometry(400, 400, 400, 400)
         self.setWindowTitle('Arquivo de Texto')
-        # Classes para ajudar na criação do aplicativo
-        self.layout = QVBoxLayout(self)
-        # Criar um botao e conectá-lo a uma função para fazer algo
-        self.button = QPushButton("Click me")
-        self.button.clicked.connect(self.say_hello)
-        self.layout.addWidget(self.button)
-        # Lista de opções
+        self.createMenu()
 
-    def say_hello(self):
-        print("Button clicked, Hello!")
+    def createMenu(self):
+        menuBar = QMenuBar(self)
+        self.setMenuBar(menuBar)
+        menuBar = self.menuBar()
+        filemenu = QMenu('File', self)
+        menuBar.addMenu(filemenu)
 
 
 if __name__ == '__main__':
