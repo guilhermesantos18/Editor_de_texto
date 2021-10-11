@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QPushButton, QWidget, QVBoxLayout, QMainWindow, QMenu, QMenuBar
-from PySide6.QtGui import QCursor
+from PySide6.QtGui import QIcon, QKeySequence
 
 
 def say_hello():
@@ -20,6 +20,9 @@ class GUI(QMainWindow):
         menuBar = self.menuBar()
         filemenu = QMenu('File', self)
         menuBar.addMenu(filemenu)
+        filemenu.addAction(QIcon('novodocumento.ico'), 'New')
+        filemenu.addAction(QIcon('abrirdocumento.ico'), 'Open')
+        filemenu.addAction(QIcon('salvar.ico'), 'Save')
 
 
 if __name__ == '__main__':
