@@ -1,5 +1,5 @@
 import sys
-from PySide6.QtWidgets import QApplication, QPushButton, QWidget, QVBoxLayout, QMainWindow, QMenu, QMenuBar
+from PySide6.QtWidgets import QApplication, QMainWindow, QMenu, QMenuBar, QFileDialog
 from PySide6.QtGui import QIcon, QKeySequence, QAction
 
 
@@ -28,9 +28,9 @@ class GUI(QMainWindow):
         botao_save = filemenu.addAction(QIcon('salvar.ico'), 'Save')
         botao_save.triggered.connect(lambda: self.salvar_arquivo())
 
-    def salvar_arquivo(self, path, text):
-        with open(path, 'w') as filetext:
-            file = filetext.write(text)
+    def salvar_arquivo(self):
+        salvar = QFileDialog(self)
+        salvar.saveFileContent()
 
 
 if __name__ == '__main__':
