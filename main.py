@@ -1,11 +1,6 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QMenu, QMenuBar, QFileDialog
+from PySide6.QtWidgets import QApplication, QMainWindow, QMenu, QMenuBar, QFileDialog, QTextEdit
 from PySide6.QtGui import QIcon
-
-
-def say_hello(*args):
-    print("Button clicked, Hello!")
-    print(args)
 
 
 class GUI(QMainWindow):
@@ -13,6 +8,7 @@ class GUI(QMainWindow):
         super(GUI, self).__init__()
         self.setGeometry(400, 400, 400, 400)
         self.setWindowTitle('Arquivo de Texto')
+        self.editor = QTextEdit()
         self.createMenu()
 
     def createMenu(self):
