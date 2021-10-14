@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QMenu, QMenuBar, QFileDialog
-from PySide6.QtGui import QIcon, QKeySequence, QAction
+from PySide6.QtGui import QIcon
 
 
 def say_hello(*args):
@@ -16,21 +16,27 @@ class GUI(QMainWindow):
         self.createMenu()
 
     def createMenu(self):
-        menuBar = QMenuBar(self)
-        self.setMenuBar(menuBar)
-        menuBar = self.menuBar()
+        menu_bar = QMenuBar(self)
+        self.setMenuBar(menu_bar)
+        menu_bar = self.menuBar()
         filemenu = QMenu('File', self)
-        menuBar.addMenu(filemenu)
+        menu_bar.addMenu(filemenu)
         botao_new = filemenu.addAction(QIcon('novodocumento.ico'), 'New')
-        # botao_new.triggered.connect(lambda: say_hello(self))
+        botao_new.triggered.connect(lambda: self.new_file())
         botao_open = filemenu.addAction(QIcon('abrirdocumento.ico'), 'Open')
-        # botao_open.triggered.connect(lambda: ())
+        botao_open.triggered.connect(lambda: self.open_file())
         botao_save = filemenu.addAction(QIcon('salvar.ico'), 'Save')
-        botao_save.triggered.connect(lambda: self.salvar_arquivo())
+        botao_save.triggered.connect(lambda: self.save_file())
 
-    def salvar_arquivo(self):
-        salvar = QFileDialog(self)
-        salvar.saveFileContent()
+    def save_file(self):
+        # save_file = QFileDialog.saveFileContent()
+        pass
+
+    def open_file(self):
+        file_name = QFileDialog.getOpenFileName(self, "Open text", "", "Text files (*.txt)")
+
+    def new_file(self):
+        pass
 
 
 if __name__ == '__main__':
